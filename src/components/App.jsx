@@ -65,23 +65,23 @@ finally {
   this.setState({ isLoading: false });
 }
 }
-onSelectImg = (largeImageURL, tags) => {
-  this.setState({
-    largeImageURL: largeImageURL,
-    tags: tags,
-  });
-};
+// onSelectImg = (largeImageURL, tags) => {
+//   this.setState({
+//     largeImageURL: largeImageURL,
+//     tags: tags,
+//   });
+// };
 
-openModal = () => {
-  this.setState({ modalIsOpen: true });
-};
-closeModal = () => {
-  this.setState({ 
-    modalIsOpen: false, 
-    // largeImageURL: null, 
-    // tags: null, 
-  });
-};
+// openModal = () => {
+//   this.setState({ modalIsOpen: true });
+// };
+// closeModal = () => {
+//   this.setState({ 
+//     modalIsOpen: false, 
+//     // largeImageURL: null, 
+//     // tags: null, 
+//   });
+// };
 
   render () {
   // const { img, isLoading, error, page, totalPage } = this.state;

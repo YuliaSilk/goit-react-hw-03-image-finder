@@ -20,12 +20,12 @@ export class ImageGalleryItem extends Component {
         });
       };
     render() {
-        const { src, largeImageURL, tags, onSelectImg } = this.props;
+        const { src, largeImageURL, tags, } = this.props;
         const { modalIsOpen } = this.state;
 
         return (
-            <li>
-<img src={src} alt={tags} onClick={() => onSelectImg(largeImageURL, tags)}/>
+            <li onClick={this.openModal}>
+<img src={src} alt={tags} />
 <ModalImg src={largeImageURL} tags={tags} modalIsOpen={modalIsOpen} closeModal={this.closeModal}/>
             </li>
             )
@@ -33,24 +33,3 @@ export class ImageGalleryItem extends Component {
   
 }
 
-
-
-// export default class ImageGalleryItem extends Component {
-//   
-//     toggleModal = () => {
-//       this.setState(prevState => ({ modalIsOpen: !prevState.modalIsOpen }));
-//     }
-  
-
-//     render() {
-//       const { src, largeSrc, tags } = this.props;
-//       const { modalIsOpen } = this.state;
-  
-//       return (
-//         <>
-//           <Image onClick={this.toggleModal} src={src} alt={tags} />
-//           <ModalImage src={largeSrc} tags={tags} modalIsOpen={modalIsOpen} closeModal={this.closeModal} />
-//         </>
-//       )
-//     }
-//   }
