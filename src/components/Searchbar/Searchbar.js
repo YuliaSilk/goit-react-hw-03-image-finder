@@ -3,10 +3,10 @@ import * as Yup from 'yup';
 // import { IconName } from "react-icons/ci";
 
 const searchSchema = Yup.object().shape({
-query: Yup.string().required('This field is reduired').trim().lowercase(),
+query: Yup.string().trim().lowercase().required('This field is reduired'),
 });
 
-export const SearchBar = (onSubmitForm) => {
+export const SearchBar = ({ onSubmitForm }) => {
      return (
         <div>
            <Formik
@@ -26,7 +26,7 @@ export const SearchBar = (onSubmitForm) => {
         // class="input"
         type="text"
         autoComplete="off"
-        autFocus
+        autoFocus
         placeholder="Search images and photos"
         />
         <ErrorMessage component="div" name="query"/>
