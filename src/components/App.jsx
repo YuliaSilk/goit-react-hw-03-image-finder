@@ -49,7 +49,7 @@ componentDidUpdate(_, prevState) {
 
 fetchImages = async() => {
   try {
-    this.setState({ loading: true });
+    this.setState({ isLoading: true });
     const data = await getImage(this.state.query, this.state.page);
     toast.success('Great!');
     this.setState(prev => (
@@ -60,7 +60,7 @@ fetchImages = async() => {
   toast.error('Ooops! Error!');
 }
 finally {
-  this.setState({ loading: false });
+  this.setState({ isLoading: false });
 }
 }
 onSelectImg = (largeImageURL, tags) => {
