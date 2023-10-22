@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// import { GlobalStyle } from './GlobalStyles'
 import { getImage } from './api';
 // import Notiflix from "notiflix";
 import  toast from 'react-hot-toast';
@@ -6,7 +7,7 @@ import { SearchBar } from "./Searchbar/Searchbar";
 import { ImageGallery } from "./ImageGallery/ImageGallery";
 import { Loader } from "./Loader/Loader";
 import { LoadMoreBtn } from "./Button/Button";
-import { ModalWindow } from "./Modal/Modal";
+// import { ModalWindow } from "./Modal/Modal";
 
 export class App extends Component {
   state = {
@@ -43,8 +44,9 @@ componentDidUpdate(_, prevState) {
 
   if (prevState.query !== this.state.query || 
     prevState.page !== this.state.page) {
+      this.fetchImages()
       }
-    this.fetchImages()
+ 
 }
 
 fetchImages = async() => {
@@ -70,14 +72,14 @@ onSelectImg = (largeImageURL, tags) => {
   });
 };
 
-toOpenModal = () => {
-  this.setState({ isModalOpen: true });
+openModal = () => {
+  this.setState({ modalIsOpen: true });
 };
-toCloseModal = () => {
+closeModal = () => {
   this.setState({ 
-    isModalOpen: false, 
-    largeImageURL: null, 
-    tags: null, 
+    modalIsOpen: false, 
+    // largeImageURL: null, 
+    // tags: null, 
   });
 };
 
@@ -91,17 +93,12 @@ toCloseModal = () => {
     {this.state.images.length > 0 && (
       <ImageGallery images={this.state.images}
       onSelectImg={this.onSelectImg}
-      toOpenModal={this.toOpenModal}/>
+      openModal={this.openModal}/>
     )}
-  
-    {this.state.largeImageURL !== null && (<ModalWindow isModalOpen={this.state.isModalOpen}
-      closeModal={this.toCloseModal}
-      largeImageURL={this.state.largeImageURL}
-      tags={this.state.tags}/>)}
+
     {this.state.isLoading && <Loader/>}
     {this.state.images.length > 0 && this.state.page !== this.state.totalPage && 
       (<LoadMoreBtn onClick={this.toLoadMore}/>)}
-    {/* <LoadMoreBtn/> */}
     </div>
     )
   }

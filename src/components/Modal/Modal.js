@@ -1,4 +1,4 @@
-import { Component } from "react";
+// import { Component } from "react";
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -10,26 +10,30 @@ const customStyles = {
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
     },
+    overlay: {
+            background:' rgba(213, 236, 246, 0.54)'
+          }
   };
   Modal.setAppElement('#root');
 
 
-export class ModalWindow extends Component {
-render() {
-    const { largeImageURL, tags, toCloseModal, isModalOpen } = this.props
+export const ModalImg = ({ src, tags, modalIsOpen, closeModal }) => {
+
+    // const { largeImageURL, tags, closeModal, isModalOpen } = this.props
     return (
-        <div onClick={toCloseModal}>
+        <div onClick={closeModal}>
             <Modal
-            isOpen={isModalOpen}
-            onRequestClose={toCloseModal}
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
             style={customStyles} 
             contentLabel="Example Modal"   
             >
-                <div>
-                    <image src={largeImageURL} alt={tags}/>
-                </div>
+               
+                    <p>modal</p>
+                    <img src={src} alt={tags}/>
+               
             </Modal>
         </div>
     )
 }
-}
+
