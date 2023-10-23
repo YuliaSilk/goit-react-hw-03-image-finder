@@ -1,26 +1,42 @@
-// .Button {
-//     padding: 8px 16px;
-//     border-radius: 2px;
-//     background-color: #3f51b5;
-//     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-//     text-align: center;
-//     display: inline-block;
-//     color: #fff;
-//     border: 0;
-//     text-decoration: none;
-//     cursor: pointer;
-//     font-family: inherit;
-//     font-size: 18px;
-//     line-height: 24px;
-//     font-style: normal;
-//     font-weight: 500;
-//     min-width: 180px;
-//     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
-//       0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-//   }
-  
-//   .Button:hover,
-//   .Button:focus {
-//     background-color: #303f9f;
-//   }
+import styled from "styled-components";
+
+export const BtnLoadMore = styled.button`
+
+    margin: 0 auto;
+    width: 150px;
+    font-size: 16px;
+    font-weight: 600;
+    color: ${({ theme }) => theme.colors.border};
+    cursor: pointer;
+   
+    height: 40px;
+    text-align:center;
+    border: 1px solid ${({ theme }) => theme.colors.border};
+    background-size: 300% 100%;
+    background: transparent;
+    border-radius: 50px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+
+&:hover{
+    color: ${({ theme }) => theme.colors.backgraund};
+    border: none;
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out; 
+    box-shadow: inset 0 -3.25em 0 0 ${({ theme }) => theme.colors.border};
+}
+&:focus {
+    outline: none;
+}
+`;
+
+
+
+
+
   

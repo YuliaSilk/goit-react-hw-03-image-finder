@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-// import { GlobalStyle } from './GlobalStyles'
 import { getImage } from './api';
-// import Notiflix from "notiflix";
-import  toast from 'react-hot-toast';
 import { SearchBar } from "./Searchbar/Searchbar";
 import { ImageGallery } from "./ImageGallery/ImageGallery";
 import { Loader } from "./Loader/Loader";
 import { LoadMoreBtn } from "./Button/Button";
-// import { ModalWindow } from "./Modal/Modal";
+import { Layout } from "./layout";
+import toast, { Toaster } from "react-hot-toast";
 
 export class App extends Component {
   state = {
@@ -39,14 +37,10 @@ toLoadMore = () => {
   }));
 };
 componentDidUpdate(_, prevState) {
-// console.log('prevState', prevState);
-// console.log('this.state', this.state);
-
   if (prevState.query !== this.state.query || 
     prevState.page !== this.state.page) {
       this.fetchImages()
       }
- 
 }
 
 fetchImages = async() => {
@@ -65,41 +59,21 @@ finally {
   this.setState({ isLoading: false });
 }
 }
-// onSelectImg = (largeImageURL, tags) => {
-//   this.setState({
-//     largeImageURL: largeImageURL,
-//     tags: tags,
-//   });
-// };
-
-// openModal = () => {
-//   this.setState({ modalIsOpen: true });
-// };
-// closeModal = () => {
-//   this.setState({ 
-//     modalIsOpen: false, 
-//     // largeImageURL: null, 
-//     // tags: null, 
-//   });
-// };
-
   render () {
-  // const { img, isLoading, error, page, totalPage } = this.state;
    console.log(this.state)
 
   return (
-    <div>
+    <Layout>
     <SearchBar onSubmitForm={this.onSubmitForm} ></SearchBar>
-    {this.state.images.length > 0 && (
-      <ImageGallery images={this.state.images}
-      onSelectImg={this.onSelectImg}
-      openModal={this.openModal}/>
-    )}
-
     {this.state.isLoading && <Loader/>}
+    {this.state.error && <p>"Whooops! Please reload this page!"</p>}
+    {this.state.images.length > 0 && (
+      <ImageGallery images={this.state.images}/>
+    )}
     {this.state.images.length > 0 && this.state.page !== this.state.totalPage && 
       (<LoadMoreBtn onClick={this.toLoadMore}/>)}
-    </div>
+    <Toaster position="top-right"/>
+    </Layout>
     )
   }
 

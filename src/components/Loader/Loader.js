@@ -1,14 +1,15 @@
 import { FallingLines } from 'react-loader-spinner';
+import { PositionLoader } from './Loader.Styled';
 
 export const Loader =() => {
     return (
-        <div>
+        <PositionLoader>
 <FallingLines
-  color="#4fa94d"
-  width="100"
+  color="#fcdbe2"
+  width="200"
   visible={true}
   ariaLabel='falling-lines-loading'
 />
-        </div>
+        </PositionLoader>
     )
 }

@@ -1,4 +1,3 @@
-// import { Component } from "react";
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -16,22 +15,16 @@ const customStyles = {
 
 
 export const ModalImg = ({ src, tags, modalIsOpen, closeModal }) => {
-
-    // const { largeImageURL, tags, closeModal, isModalOpen } = this.props
-    return (
-        <div onClick={closeModal}>
-            <Modal
-            isOpen={modalIsOpen}
-            onRequestClose={closeModal}
-            style={customStyles} 
-            contentLabel="Example Modal"   
-            >
-               
-                    <p>modal</p>
-                    <img src={src} alt={tags}/>
-               
-            </Modal>
-        </div>
-    )
+  return (
+    <div>
+    <Modal
+        isOpen={modalIsOpen}
+      style={customStyles}
+      onRequestClose={closeModal}
+      >
+      <img src={src} alt={tags} width="800"/>
+    </Modal>
+    </div>
+  )
 }
 

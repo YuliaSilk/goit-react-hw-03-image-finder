@@ -1,6 +1,7 @@
-import { Formik, ErrorMessage, Form, Field } from "formik";
+import { Formik } from "formik";
 import * as Yup from 'yup';
-// import { IconName } from "react-icons/ci";
+import { ErrMsg, SearchBarStyle, SearchForm, SearchFormBtn, SearchInput } from "./Searchbar.Styled";
+import { CiSearch } from "react-icons/ci";
 
 const searchSchema = Yup.object().shape({
 query: Yup.string().trim().lowercase().required('This field is reduired'),
@@ -8,7 +9,7 @@ query: Yup.string().trim().lowercase().required('This field is reduired'),
 
 export const SearchBar = ({ onSubmitForm }) => {
      return (
-        <div>
+        <SearchBarStyle>
            <Formik
             initialValues={{ 
                 query: '',}}
@@ -18,10 +19,10 @@ export const SearchBar = ({ onSubmitForm }) => {
                  actions.resetForm(); 
             }}
           >
-              <Form>
+              <SearchForm>
         
         <label >
-        <Field
+        <SearchInput
         name="query"
         // class="input"
         type="text"
@@ -29,14 +30,18 @@ export const SearchBar = ({ onSubmitForm }) => {
         autoFocus
         placeholder="Search images and photos"
         />
-        <ErrorMessage component="div" name="query"/>
-        <button type="submit">search-icon</button>
+        <ErrMsg component="div" name="query" />
         </label>
-      </Form>
+      
+        <SearchFormBtn type="submit">
+        <CiSearch ></CiSearch>
+        </SearchFormBtn>
+     
+      </SearchForm>
             
           </Formik>
        
-        </div>
+        </SearchBarStyle>
       );
 } 
 

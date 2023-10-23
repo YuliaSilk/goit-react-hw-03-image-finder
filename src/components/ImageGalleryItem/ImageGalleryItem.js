@@ -1,5 +1,6 @@
 import { ModalImg } from "components/Modal/Modal";
 import { Component } from "react";
+import { ImageGalleryItemImg, ImageGalleryLi } from "./ImageGalleryItem.Styled";
 
 
 export class ImageGalleryItem extends Component {
@@ -7,12 +8,13 @@ export class ImageGalleryItem extends Component {
         modalIsOpen: false
     }
     openModal = () => {
-        this.state({ modalIsOpen: true});
+        this.setState({ modalIsOpen: true });
+    }
+   
+    closeModal = () => {
+        this.setState({ modalIsOpen: false });
     }
 
-    closeModal = () => {
-        this.state({ modalIsOpen: false});
-    }
     onSelectImg = (largeImageURL, tags) => {
         this.setState({
           largeImageURL: largeImageURL,
@@ -24,10 +26,10 @@ export class ImageGalleryItem extends Component {
         const { modalIsOpen } = this.state;
 
         return (
-            <li onClick={this.openModal}>
-<img src={src} alt={tags} />
-<ModalImg src={largeImageURL} tags={tags} modalIsOpen={modalIsOpen} closeModal={this.closeModal}/>
-            </li>
+            <ImageGalleryLi onClick={this.openModal}>
+            <ImageGalleryItemImg src={src} alt={tags} />
+            <ModalImg src={largeImageURL} tags={tags} modalIsOpen={modalIsOpen} closeModal={this.closeModal} />
+            </ImageGalleryLi>
             )
     }
   
